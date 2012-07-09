@@ -1,6 +1,6 @@
 <?php
 
-namespace Cli;
+namespace Visor\Cli;
 
 class Table
 {
@@ -57,6 +57,8 @@ class Table
     
     public function render( $whitelist = null )
     {
+        $buffer = '';
+        
         $width = 0;
         $rows = $this->preRender( $whitelist );
         
@@ -68,16 +70,18 @@ class Table
             }
         }
         
-        echo str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
-        echo array_shift( $rows ); 
-        echo str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
+        $buffer .= str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
+        $buffer .= array_shift( $rows ); 
+        $buffer .= str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
         
         foreach( $rows as $line )
         {
-            echo $line;
+            $buffer .= $line;
         }
         
-        echo str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
+        $buffer .= str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
+        
+        return $buffer;
     }
     
     private function renderRow( $row, $whitelist )

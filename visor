@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+require_once 'vendor/autoload.php';
+
+use \Symfony\Component\Console\Application;
+use \Visor\Cli\Command;
+
+$application = new Application();
+$application->add( new Command\Status );
+$application->add( new Command\Ls );
+$application->add( new Command\Tail );
+$application->add( new Command\Info );
+$application->add( new Command\Start );
+$application->add( new Command\GroupStart );
+$application->add( new Command\GroupStop );
+$application->run();

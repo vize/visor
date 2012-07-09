@@ -17,8 +17,7 @@
     "autoload": {
         "psr-0": {
             "Visor": "src",
-            "Supervisord": "src",
-            "Cli": "src"
+            "Supervisord": "src"
         }
     }, 
     
