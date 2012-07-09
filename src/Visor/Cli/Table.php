@@ -74,10 +74,7 @@ class Table
         $buffer .= array_shift( $rows ); 
         $buffer .= str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
         
-        foreach( $rows as $line )
-        {
-            $buffer .= $line;
-        }
+        $buffer .= implode( $rows, '' );
         
         $buffer .= str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
         
