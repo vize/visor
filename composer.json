@@ -1,0 +1,29 @@
+{
+    "name": "missinglink/visor",
+    "version": "0.0.1",
+    "type": "library", 
+    "description": "Daemon manager", 
+    "keywords": ["Daemon", "Manager", "Supervisord"], 
+    "website": "https://github.com/missinglink/visor",
+    "repository": "https://github.com/missinglink/visor",
+    
+    "authors": [
+        {
+            "name": "Peter Johnson",
+            "email": "insomnia@rcpt.at"
+        }
+    ],
+    
+    "autoload": {
+        "psr-0": {
+            "Visor": "src",
+            "Supervisord": "src",
+            "Cli": "src"
+        }
+    }, 
+    
+    "require": {
+        "php": ">=5.3",
+        "ext-xmlrpc": "*"
+    }
+}

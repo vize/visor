@@ -11,5 +11,4 @@ $server = new \Supervisord\Server( $config );
 $connection = new \Supervisord\Connection( 'http://localhost:9001/RPC2' );
 $client = new \Supervisord\Client( $connection );
 
-$table = new \Cli\Table( $client->getAllProcessInfo() ?: array() );
-$table->render( array( 'statename', 'pid', 'group', 'name', 'description', 'logfile' ) );
+var_dump( $client->getProcessInfo( $argv[ 1 ] ) );

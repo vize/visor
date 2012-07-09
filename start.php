@@ -2,7 +2,7 @@
 
 namespace Visor;
 
-require_once 'autoloader.php';
+require_once 'vendor/autoload.php';
 
 $config = new \Supervisord\Config;
 $config->import( new \SplFileObject( 'default.conf' ) );

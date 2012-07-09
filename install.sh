@@ -17,4 +17,10 @@ echo "----------------------------------------"
 echo "[Installation Complete]"
 echo "----------------------------------------"
 echo "Version:" $(supervisord -v)
+
+echo "----------------------------------------"
+echo "[Installing Dependencies]"
+echo "----------------------------------------"
+curl -s http://getcomposer.org/installer | php
+php composer.phar install
 echo
