@@ -1,12 +1,24 @@
 #!/usr/bin/env php
 <?php
 
-require_once 'vendor/autoload.php';
+if( !is_readable( 'vendor/autoload.php' ) )
+{
+    die( "Visor is missing dependencies. Try running install.sh\r\n" );
+}
 
+require_once 'vendor/autoload.php';
 use \Symfony\Component\Console\Application;
 use \Visor\Cli\Command;
 
-$application = new Application();
+$logo = <<<EOT
+  _   ___             
+ | | / (_)__ ___  ____
+ | |/ / (_-</ _ \/ __/
+ |___/_/___/\___/_/   
+
+EOT;
+
+$application = new Application( $logo . PHP_EOL, '0.0.1' );
 $application->add( new Command\Status );
 $application->add( new Command\Ls );
 $application->add( new Command\Tail );
