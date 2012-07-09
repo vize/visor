@@ -13,7 +13,7 @@ class Server
     
     public function start()
     {
-        $this->config->save( 'supervisord.conf' );
+//        $this->config->save( 'supervisord.conf' );
         
         $this->exec( 'supervisord' );
     }

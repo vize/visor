@@ -23,7 +23,7 @@ class Status extends Command
     protected function execute( InputInterface $input, OutputInterface $output )
     {
         $config = new Config;
-        $config->import( new SplFileObject( 'default.conf' ) );
+        $config->import( new SplFileObject( 'supervisord.conf' ) );
 
         $server = new Server( $config );
         

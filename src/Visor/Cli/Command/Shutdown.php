@@ -13,22 +13,22 @@ use \Supervisord\Server;
 
 use \SplFileObject;
 
-class Start extends Command
+class Shutdown extends Command
 {
     protected function configure()
     {
-        $this->setName('server:start')
-             ->setDescription('Start supervisord');
+        $this->setName('server:shutdown')
+             ->setDescription('Shutdown supervisord');
     }
 
     protected function execute( InputInterface $input, OutputInterface $output )
     {        
         $config = new Config;
-        $config->import( new SplFileObject( 'default.conf' ) );
+        $config->import( new SplFileObject( 'supervisord.conf' ) );
 
         $server = new Server( $config );
-        $server->restart();
+        $server->stop();
         
-        $output->writeln( '<info>[starting supervisord]</info>' );
+        $output->writeln( '<info>[stopping supervisord]</info>' );
     }
 }
