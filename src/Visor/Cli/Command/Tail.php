@@ -26,6 +26,6 @@ class Tail extends Command
         
         $tail = $client->tailProcessStdoutLog( $input->getArgument( 'name' ) );
 
-        $output->writeln( is_array( $tail ) && !empty( $tail ) ? $tail[ 0 ] : '[no output]' );
+        $output->writeln( is_array( $tail ) && !empty( $tail ) ? reset( $tail ) : '[no output]' );
     }
 }

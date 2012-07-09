@@ -22,7 +22,7 @@ class Server
     {
         if( !$this->isRunning() )
         {
-            throw new \RuntimeException( 'Server not running' );
+            throw new ServerException( 'Server not running' );
         }
         
         $this->exec( sprintf( 'kill -QUIT %s', $this->getPid() ) );
@@ -32,7 +32,7 @@ class Server
     {
         if( !$this->isRunning() )
         {
-            throw new \RuntimeException( 'Server not running' );
+            throw new ServerException( 'Server not running' );
         }
         
         $this->exec( sprintf( 'kill -USR2 %s', $this->getPid() ) );
@@ -42,7 +42,7 @@ class Server
     {
         if( !$this->isRunning() )
         {
-            throw new \RuntimeException( 'Server not running' );
+            throw new ServerException( 'Server not running' );
         }
         
         $this->exec( sprintf( 'kill -HUP %s', $this->getPid() ) );
@@ -67,7 +67,7 @@ class Server
     {
         if( !$this->isRunning() )
         {
-            throw new \RuntimeException( 'Could not read PID file, is the server running?' );
+            throw new ServerException( 'Could not read PID file, is the server running?' );
         }
         
         return (int) file_get_contents( $this->config[ 'supervisord' ][ 'pidfile' ] );

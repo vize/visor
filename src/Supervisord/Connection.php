@@ -22,6 +22,11 @@ class Connection
         
         $response = xmlrpc_decode( curl_exec( $curl ) );        
         curl_close( $curl );
+        
+        if( isset( $response[ 'faultString' ], $response[ 'faultCode' ] ) )
+        {
+            throw new ConnectionException( $response[ 'faultString' ], $response[ 'faultCode' ] );
+        }
 
         return $response;
     }
