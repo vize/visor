@@ -1,6 +1,20 @@
 #!/bin/sh
 
 #sudo apt-get update
+
+echo "----------------------------------------"
+echo "[Installing PHP XMLRPC library]"
+echo "----------------------------------------"
 sudo apt-get install -y php5-xmlrpc
 
-echo "Installation Complete"
+echo "----------------------------------------"
+echo "[Installing Supervisor]"
+echo "----------------------------------------"
+sudo apt-get install -y python-setuptools
+sudo easy_install supervisor
+
+echo "----------------------------------------"
+echo "[Installation Complete]"
+echo "----------------------------------------"
+echo "Version:" $(supervisord -v)
+echo

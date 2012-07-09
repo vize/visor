@@ -11,4 +11,4 @@ $server = new \Supervisord\Server( $config );
 $connection = new \Supervisord\Connection( 'http://localhost:9001/RPC2' );
 $client = new \Supervisord\Client( $connection );
 
-var_dump( $client->getProcessInfo( $argv[ 1 ] ) );
+$client->stopProcessGroup( $argv[ 1 ] );
