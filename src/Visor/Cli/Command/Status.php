@@ -29,9 +29,9 @@ class Status extends Command
         
         if( $server->isRunning() )
         {
-            $output->writeln( sprintf( '[server running as pid %s]', $server->getPid() ) );
+            $output->writeln( sprintf( '<info>[server running as pid %s]</info>', $server->getPid() ) );
         }
         
-        else $output->writeln( '[server not running]' );
+        else $output->writeln( '<error>[server not running]</error>' );
     }
 }
