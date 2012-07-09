@@ -2,4 +2,4 @@ supervisord.conf
 supervisord.pid
 composer.phar
 vendor
-log
+log/*.log
