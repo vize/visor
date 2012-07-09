@@ -62,9 +62,9 @@ class Table
         $width = 0;
         $rows = $this->preRender( $whitelist );
         
-        foreach( $this->preRender( $whitelist ) as $line )
+        foreach( $rows as $line )
         {
-            if( strlen( $line ) > $width )
+            if( strlen( trim( $line ) ) > $width )
             {
                 $width = strlen( trim( $line ) );
             }
