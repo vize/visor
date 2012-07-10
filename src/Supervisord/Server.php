@@ -36,12 +36,7 @@ class Server
     
     public function restart()
     {
-        if( !$this->isRunning() )
-        {
-            $this->start();
-        }
-        
-        else $this->reload();
+        $this->isRunning() ? $this->reload() : $this->start();
     }
     
     public function isRunning()
