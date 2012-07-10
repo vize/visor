@@ -16,7 +16,7 @@ class Client
     {
         foreach( $this->listMethods() as $method )
         {
-            $storage[ $method ] = $this->methodHelp( $method );
+            $store[ $method ] = $this->methodHelp( $method );
         }
         
         return $store;
