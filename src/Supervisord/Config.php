@@ -4,6 +4,8 @@ namespace Supervisord;
 
 class Config extends \ArrayObject
 {
+    const EOL = "\r\n";
+    
     public function import( \SplFileObject $file, $section = 'global' )
     {
         foreach( $file as $line )
@@ -33,11 +35,11 @@ class Config extends \ArrayObject
         
         foreach( $this as $heading => $data )
         {
-            $file .= sprintf( '%s[%s]', \PHP_EOL, $heading ) . "\r\n";
+            $file .= sprintf( '%s[%s]%s', self::EOL, $heading, self::EOL );
             
             foreach( $data as $key => $value )
             {
-                $file .= sprintf( '%s=%s', $key, $value ) . "\r\n";
+                $file .= sprintf( '%s=%s%s', $key, $value, self::EOL );
             }
         }
         
