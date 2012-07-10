@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
-use \Supervisord\Connection;
+use \Supervisord\InetConnection;
 use \Supervisord\Client;
 
 class Info extends Command
@@ -21,7 +21,7 @@ class Info extends Command
 
     protected function execute( InputInterface $input, OutputInterface $output )
     {        
-        $connection = new Connection( 'http://localhost:9001/RPC2' );
+        $connection = new InetConnection( 'http://localhost:9001/RPC2' );
         $client = new Client( $connection );
         
         $info = $client->getProcessInfo( $input->getArgument( 'name' ) );
