@@ -28,7 +28,7 @@ class Connection
         
         switch( gettype( $response ) )
         {
-            case 'NULL' : throw new ConnectionException( 'Could not connect to server' );
+            case 'NULL' : throw new ConnectionException( sprintf( 'Could not connect to server at %s', $this->url ) );
             case 'array' :
                 if( isset( $response[ 'faultString' ], $response[ 'faultCode' ] ) )
                 {
