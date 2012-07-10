@@ -64,9 +64,9 @@ class Server
             {
                 $pid = trim( file_get_contents( $this->config[ 'supervisord' ][ 'pidfile' ] ) );
                 
-                if( is_dir( sprintf( '/proc/%s', $pid ) ) ) 
+                if( is_numeric( $pid ) && is_dir( sprintf( '/proc/%u', $pid ) ) ) 
                 {
-                    return true;
+                    return (int) $pid;
                 }
             }
         }
@@ -76,12 +76,12 @@ class Server
     
     public function getPid()
     {
-        if( !$this->isRunning() )
+        if( false === ( $pid = $this->isRunning() ) )
         {
             throw new ServerException( 'Could not read PID file, is the server running?' );
         }
         
-        return (int) file_get_contents( $this->config[ 'supervisord' ][ 'pidfile' ] );
+        return $pid;
     }
     
     private function exec( $command )
