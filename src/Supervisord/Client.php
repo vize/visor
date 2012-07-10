@@ -12,14 +12,14 @@ class Client
     }
     
     /** API Documentation */
-    public function generateDocumentation( $storage = array() )
+    public function generateDocumentation( $store = array() )
     {
         foreach( $this->listMethods() as $method )
         {
             $storage[ $method ] = $this->methodHelp( $method );
         }
         
-        return $storage;
+        return $store;
     }
     
     /** Supervisor */
