@@ -28,7 +28,7 @@ class Client
     }
     
     public function getIdentification(){
-        return $this->connection->call( 'supervisor.getSupervisorVersion' );
+        return $this->connection->call( 'supervisor.getIdentification' );
     }
     public function getState(){
         return $this->connection->call( 'supervisor.getState' );

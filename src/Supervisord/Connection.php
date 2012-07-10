@@ -9,6 +9,9 @@ class Connection
     public function __construct( $url )
     {
         $this->url = $url;
+        
+        // Confirm server is active
+        $this->call( 'supervisor.getSupervisorVersion' );
     }
     
     public function call( $method, $params = array() )
@@ -23,9 +26,14 @@ class Connection
         $response = xmlrpc_decode( curl_exec( $curl ) );        
         curl_close( $curl );
         
-        if( isset( $response[ 'faultString' ], $response[ 'faultCode' ] ) )
+        switch( gettype( $response ) )
         {
-            throw new ConnectionException( $response[ 'faultString' ], $response[ 'faultCode' ] );
+            case 'NULL' : throw new ConnectionException( 'Could not find server' );
+            case 'array' :
+                if( isset( $response[ 'faultString' ], $response[ 'faultCode' ] ) )
+                {
+                    throw new ConnectionException( $response[ 'faultString' ], $response[ 'faultCode' ] );
+                }
         }
 
         return $response;
