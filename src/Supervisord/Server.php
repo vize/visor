@@ -18,31 +18,16 @@ class Server
     
     public function stop()
     {
-        if( !$this->isRunning() )
-        {
-            throw new ServerException( 'Server not running' );
-        }
-        
         $this->exec( sprintf( 'kill -QUIT %s', $this->getPid() ) );
     }
     
     public function clearLogs()
     {
-        if( !$this->isRunning() )
-        {
-            throw new ServerException( 'Server not running' );
-        }
-        
         $this->exec( sprintf( 'kill -USR2 %s', $this->getPid() ) );
     }
     
     public function reload()
     {
-        if( !$this->isRunning() )
-        {
-            throw new ServerException( 'Server not running' );
-        }
-        
         $this->exec( sprintf( 'kill -HUP %s', $this->getPid() ) );
     }
     
@@ -86,6 +71,7 @@ class Server
     
     private function exec( $command )
     {
+        $exitCode = 0;
         $output = exec( $command, $lines, $exitCode );
         
         if( $exitCode > 0 )
