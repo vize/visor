@@ -58,7 +58,20 @@ class Server
     
     public function isRunning()
     {
-        return isset( $this->config[ 'supervisord' ][ 'pidfile' ] ) && is_readable( $this->config[ 'supervisord' ][ 'pidfile' ] );
+        if( isset( $this->config[ 'supervisord' ][ 'pidfile' ] ) )
+        {
+            if( is_readable( $this->config[ 'supervisord' ][ 'pidfile' ] ) )
+            {
+                $pid = trim( file_get_contents( $this->config[ 'supervisord' ][ 'pidfile' ] ) );
+                
+                if( is_dir( sprintf( '/proc/%s', $pid ) ) ) 
+                {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
     }
     
     public function getPid()
