@@ -2,33 +2,36 @@
 
 namespace Supervisord;
 
+use Visor\Cli\Shell;
+
 class Server
 {
-    private $config;
+    private $config, $shell;
     
-    public function __construct( Config $config )
+    public function __construct( Config $config, Shell $shell )
     {
         $this->config = $config;
+        $this->shell = $shell;
     }
     
     public function start()
     {
-        $this->exec( 'supervisord' );
+        $this->shell->exec( 'supervisord' );
     }
     
     public function stop()
     {
-        $this->exec( sprintf( 'kill -QUIT %s', $this->getPid() ) );
+        $this->shell->exec( sprintf( 'kill -QUIT %s', $this->getPid() ) );
     }
     
     public function clearLogs()
     {
-        $this->exec( sprintf( 'kill -USR2 %s', $this->getPid() ) );
+        $this->shell->exec( sprintf( 'kill -USR2 %s', $this->getPid() ) );
     }
     
     public function reload()
     {
-        $this->exec( sprintf( 'kill -HUP %s', $this->getPid() ) );
+        $this->shell->exec( sprintf( 'kill -HUP %s', $this->getPid() ) );
     }
     
     public function restart()
@@ -67,18 +70,5 @@ class Server
         }
         
         return $pid;
-    }
-    
-    private function exec( $command )
-    {
-        $exitCode = 0;
-        $output = exec( $command, $lines, $exitCode );
-        
-        if( $exitCode > 0 )
-        {
-            throw new ServerException( $output, $exitCode );
-        }
-        
-        return $output;
     }
 }

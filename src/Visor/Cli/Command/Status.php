@@ -10,6 +10,8 @@ use \Visor\Cli\Table;
 use \Supervisord\Config;
 use \Supervisord\Server;
 
+use \Visor\Cli\Shell;
+
 use \SplFileObject;
 
 class Status extends Command
@@ -25,7 +27,7 @@ class Status extends Command
         $config = new Config;
         $config->import( new SplFileObject( 'supervisord.conf' ) );
 
-        $server = new Server( $config );
+        $server = new Server( $config, new Shell );
         
         if( $server->isRunning() )
         {

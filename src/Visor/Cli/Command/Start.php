@@ -11,6 +11,8 @@ use Symfony\Component\Console\Input\ArrayInput;
 use \Supervisord\Config;
 use \Supervisord\Server;
 
+use \Visor\Cli\Shell;
+
 use \SplFileObject;
 
 class Start extends Command
@@ -26,7 +28,7 @@ class Start extends Command
         $config = new Config;
         $config->import( new SplFileObject( 'supervisord.conf' ) );
 
-        $server = new Server( $config );
+        $server = new Server( $config, new Shell );
         $server->restart();
         
         $output->writeln( '<info>[starting supervisord]</info>' );
