@@ -28,7 +28,7 @@ class Connection
         
         switch( gettype( $response ) )
         {
-            case 'NULL' : throw new ConnectionException( 'Could not find server' );
+            case 'NULL' : throw new ConnectionException( 'Could not connect to server' );
             case 'array' :
                 if( isset( $response[ 'faultString' ], $response[ 'faultCode' ] ) )
                 {
