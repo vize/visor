@@ -14,8 +14,6 @@ class Config extends \ArrayObject
             // Skip Comments
             if( ';' === substr( $line, 0, 1 ) ){ continue; }
             
-//            var_dump( $line );
-            
             // Parse Sections
             if( preg_match( '_^\[(?<section>.+)\]_', $line, $match ) ){
                 $section = $match[ 'section' ];

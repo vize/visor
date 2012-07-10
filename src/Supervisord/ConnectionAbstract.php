@@ -10,8 +10,7 @@ abstract class ConnectionAbstract implements Connection
     {
         $this->dsn = $dsn;
         
-        // Confirm server is active
-        $this->call( 'supervisor.getSupervisorVersion' );
+        $this->call( 'supervisor.getSupervisorVersion' ); // Confirm server is active
     }
     
     protected function validateResponse( $response )
