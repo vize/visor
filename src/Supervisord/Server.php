@@ -76,7 +76,7 @@ class Server
         
         if( $exitCode > 0 )
         {
-            throw new \RuntimeException( $output, $exitCode );
+            throw new ServerException( $output, $exitCode );
         }
         
         return $output;
