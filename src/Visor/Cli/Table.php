@@ -73,9 +73,7 @@ class Table
         $buffer .= str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
         $buffer .= array_shift( $rows ); 
         $buffer .= str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
-        
         $buffer .= implode( $rows, '' );
-        
         $buffer .= str_pad( str_repeat( '-', $width -2 ), $width, '+', \STR_PAD_BOTH ) . \PHP_EOL;
         
         return $buffer;
