@@ -2,8 +2,6 @@
 
 namespace Visor\Cli;
 
-Use Ismini;
-
 class Table
 {
     const DELIMITER = '|';
