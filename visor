@@ -27,4 +27,5 @@ $application->add( new Command\Start );
 $application->add( new Command\Shutdown );
 $application->add( new Command\GroupStart );
 $application->add( new Command\GroupStop );
+$application->add( new Command\Version );
 $application->run();

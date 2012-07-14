@@ -11,7 +11,7 @@ class Shell
         
         if( $exitCode > 0 )
         {
-            throw new CliException( $output, $exitCode );
+            throw new CliException( isset( $lines[ 0 ] ) ? $lines[ 0 ] : $output, $exitCode );
         }
         
         return $output;

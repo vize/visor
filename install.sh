@@ -14,6 +14,15 @@ sudo apt-get install -y python-setuptools
 sudo easy_install supervisor
 
 echo "----------------------------------------"
+echo "[Installing Twiddler]"
+echo "----------------------------------------"
+[ -d vendor ] || mkdir vendor
+[ -d vendor/twiddler ] || git clone --depth=100 --quiet git://github.com/mnaberez/supervisor_twiddler.git vendor/twiddler
+cd vendor/twiddler
+sudo python setup.py install
+cd ../../
+
+echo "----------------------------------------"
 echo "[Installation Complete]"
 echo "----------------------------------------"
 echo "Version:" $(supervisord -v)
