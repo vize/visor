@@ -18,7 +18,7 @@ echo "----------------------------------------"
 echo "[Installing Twiddler]"
 echo "----------------------------------------"
 [ -d vendor ] || mkdir vendor
-[ -d vendor/twiddler ] || git clone --depth=100 --quiet git://github.com/mnaberez/supervisor_twiddler.git vendor/twiddler
+[ -d vendor/twiddler ] || git clone --depth=100 --quiet git://github.com/waptang/supervisor_twiddler.git vendor/twiddler
 cd vendor/twiddler
 sudo python setup.py install
 cd ../../

@@ -87,7 +87,7 @@ class Client
     }
     
     public function sendProcessStdin( $name, $chars ){
-        return $this->connection->call( 'supervisor.stopProcessGroup', array( $name, $chars ) );
+        return $this->connection->call( 'supervisor.sendProcessStdin', array( $name, $chars ) );
     }
     
     public function sendRemoteCommEvent( $type, $data ){

@@ -12,14 +12,20 @@ abstract class ConnectionAbstract implements Connection
         $this->call( 'supervisor.getSupervisorVersion' ); // Confirm server is active
     }
     
-    protected function validateResponse( $response )
+    protected function validateResponse( $response, $method, array $params )
     {
-        switch( gettype( $response ) ){
-            case 'NULL' : throw new ConnectionException( sprintf( 'Could not connect to server at %s', $this->dsn ) );
-            case 'array' :
-                if( isset( $response[ 'faultString' ], $response[ 'faultCode' ] ) ){
-                    throw new ConnectionException( $response[ 'faultString' ], $response[ 'faultCode' ] );
-                }
+        if( null === $response )
+        {
+            throw new ConnectionException( sprintf( 'Could not connect to server at %s', $this->dsn ) );
+        }
+        
+        else if( is_array( $response ) && isset( $response[ 'faultString' ], $response[ 'faultCode' ] ) )
+        {
+            throw new RpcException(
+                $response[ 'faultString' ],
+                $response[ 'faultCode' ],
+                new ConnectionException( sprintf( 'Failed to execute method: %s', $method ) )
+            );
         }
     }
 }

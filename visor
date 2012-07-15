@@ -28,4 +28,5 @@ $application->add( new Command\Shutdown );
 $application->add( new Command\GroupStart );
 $application->add( new Command\GroupStop );
 $application->add( new Command\Version );
+$application->add( new Command\Test );
 $application->run();

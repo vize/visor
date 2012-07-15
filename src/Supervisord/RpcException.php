@@ -4,7 +4,7 @@ namespace Supervisord;
 
 use \RuntimeException;
 
-class ConnectionException extends RuntimeException
+class RpcException extends RuntimeException
 {
     
 }
