@@ -16,14 +16,20 @@
     
     "autoload": {
         "psr-0": {
-            "Visor": "src",
-            "Supervisord": "src"
+            "Visor": "src"
         }
-    }, 
+    },
+    
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/missinglink/supervisord"
+        }
+    ],
     
     "require": {
         "php": ">=5.3",
-        "ext-xmlrpc": "*",
+        "missinglink/supervisord": "dev-master", 
         "symfony/console": "*"
     }
 }

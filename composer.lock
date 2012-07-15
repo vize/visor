@@ -1,6 +1,12 @@
 {
-    "hash": "7f650e90e1a1e82f0cefa7d4f1e6381d",
+    "hash": "d7e8e4dff58bdf1405fe81301023792b",
     "packages": [
+        {
+            "package": "missinglink/supervisord",
+            "version": "dev-master",
+            "source-reference": "9a9201d50becd502f308b1132663829bac9ed20a",
+            "commit-date": "1342323462"
+        },
         {
             "package": "symfony/console",
             "version": "v2.0.16"
@@ -11,7 +17,7 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ]
+    "stability-flags": {
+        "missinglink/supervisord": 20
+    }
 }
