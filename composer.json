@@ -1,11 +1,11 @@
 {
-    "name": "missinglink/visor",
+    "name": "vize/visor",
     "version": "0.0.1",
     "type": "library", 
     "description": "Daemon manager", 
     "keywords": ["Daemon", "Manager", "Supervisord"], 
-    "website": "https://github.com/missinglink/visor",
-    "repository": "https://github.com/missinglink/visor",
+    "website": "https://github.com/vize/visor",
+    "repository": "https://github.com/vize/visor",
     
     "authors": [
         {
@@ -23,13 +23,13 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/missinglink/supervisord"
+            "url": "https://github.com/vize/supervisord"
         }
     ],
     
     "require": {
         "php": ">=5.3",
-        "missinglink/supervisord": "dev-master", 
+        "vize/supervisord": "dev-master",
         "symfony/console": "*"
     }
 }
