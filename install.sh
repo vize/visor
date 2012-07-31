@@ -7,3 +7,5 @@ echo "----------------------------------------"
 php composer.phar update
 php composer.phar install
 echo
+
+sh vendor/vize/supervisord/install.sh

@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
-use \Supervisord\InetConnection;
+use \Supervisord\Connection\CurlConnection;
 use \Supervisord\Client;
 
 use \Visor\Cli\Table;
@@ -26,17 +26,16 @@ class Test extends Command
 
     protected function execute( InputInterface $input, OutputInterface $output )
     {
-        $connection = new InetConnection( 'http://localhost:9001/RPC2' );
-        $visor = new Visor;
+        $visor = new Visor( '127.0.0.1:9900/RPC2' );
         
-        $group = new Group( 'application1' );
-        $group->save( $connection );
+        $group = $visor->create( 'syslog', 'tail -f /var/log/syslog' )->run( 1 );
         
-        $process = new Process( $group, 'proc_1', 'tail -f /var/log/syslog' );
-        $process->save( $connection, true );
+        $group->run( 5 );
         
-        $process2 = $visor->findOne( $connection, 'application1', 'proc_1' );
-        $process2->stop( $connection );
+        var_dump( $visor->getClient()->getAllProcessInfo() );
+        
+//        $visor->find( 'syslog' )->run( 10 );
+//        $visor->find( 'syslog' )->run( 0 );
         
 //        $output->write( $visor->help( $connection, 'supervisor.getAllProcessInfo' ) );
     }

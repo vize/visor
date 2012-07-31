@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
-use \Supervisord\InetConnection;
+use \Supervisord\Connection\CurlConnection;
 use \Supervisord\Client;
 
 class GroupStop extends Command
@@ -21,7 +21,8 @@ class GroupStop extends Command
 
     protected function execute( InputInterface $input, OutputInterface $output )
     {
-        $connection = new InetConnection( 'http://localhost:9001/RPC2' );
+        $connection = new CurlConnection( '127.0.0.1:9900/RPC2' );
+        
         $client = new Client( $connection );
         
         $output->writeln( sprintf( '[stopping all prcesses in group %s]', $input->getArgument( 'name' ) ) );

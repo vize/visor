@@ -1,15 +1,15 @@
 {
-    "hash": "d7e8e4dff58bdf1405fe81301023792b",
+    "hash": "dabcdceca8238718dea32fc641597e6d",
     "packages": [
-        {
-            "package": "missinglink/supervisord",
-            "version": "dev-master",
-            "source-reference": "9a9201d50becd502f308b1132663829bac9ed20a",
-            "commit-date": "1342323462"
-        },
         {
             "package": "symfony/console",
             "version": "v2.0.16"
+        },
+        {
+            "package": "vize/supervisord",
+            "version": "dev-master",
+            "source-reference": "e4b045a8f31e7e8d639bcc7719c54eb111398143",
+            "commit-date": "1343683820"
         }
     ],
     "packages-dev": null,
@@ -18,6 +18,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "missinglink/supervisord": 20
+        "vize/supervisord": 20
     }
 }

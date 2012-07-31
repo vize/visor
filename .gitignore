@@ -3,3 +3,4 @@ supervisord.pid
 composer.phar
 vendor
 log/*.log
+tmp/
