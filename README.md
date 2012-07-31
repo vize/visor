@@ -15,7 +15,7 @@ Example Usage
 
     use \Visor\Visor;
 
-    // Create a new Visor manager
+    // Attach Visor to a running supervisord server
     $visor = new Visor( '127.0.0.1:9900/RPC2' );
     
     // Create a new process group and run 1 instance
