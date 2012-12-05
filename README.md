@@ -1,6 +1,8 @@
 PHP daemon manager
 ========================================================================
 
+NOTE!! THIS LIBRARY IS NOT FINISHED AND IS NOT LONGER IN DEVELOPMENT, FEEL FREE TO TAKE IT OVER.
+
 In development, feel free to add Issues or send Pull Requests
 
 This library is based on https://github.com/vize/supervisord
